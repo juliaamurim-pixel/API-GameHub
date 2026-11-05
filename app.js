@@ -10,8 +10,10 @@ import conexao from "./db.js";
 
 import {textoValido, inteiroPositivo} from "./src/utils/validacoes.js";
 import { validarId } from "./src/middlewares/validarId.js";
-import { tratarErro } from "./src/middlewares/tratarErro.js";
+import  tratarErro  from "./src/middlewares/tratarErro.js";
 import jogoRoutes from "./src/routes/jogoRoutes.js";
+
+import estudioRoutes from "./src/routes/estudioRoutes.js";
 
 
 const app = express();
@@ -23,6 +25,7 @@ app.get("/", (req, res) => {
     res.status(200).json({ mensagem: "API do GameHub funcionando" });
 });
 
+app.use("/estudios", estudioRoutes);
 app.use("/jogos", jogoRoutes);
 
 

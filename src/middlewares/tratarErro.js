@@ -1,4 +1,4 @@
-function tratarErro(erro, req, res, next) {
+export default function tratarErro(erro, req, res, next) {
     if (res.headersSent) return next(erro);
 
     if (erro.type === "entity.parse.failed") {
