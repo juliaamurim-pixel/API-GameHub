@@ -1,0 +1,22 @@
+info:
+  name: PUT-jogos-atualizar
+  type: http
+
+http:
+  method: PUT
+  url: http://localhost:3000/jogos/4
+  body:
+    type: json
+    data: |-
+      {
+        "titulo": "Red dead redemption",
+        "ano_lancamento": 2009,
+        "estudio_id": 4
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

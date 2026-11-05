@@ -1,0 +1,23 @@
+info:
+  name: POST-jogadores-criar
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: http://localhost:3000/jogadores/
+  body:
+    type: json
+    data: |-
+      {
+        "nome": "Kauan",
+        "email": "kauanzinho@gmail.com",
+        "nickname": "Kakau"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,0 +1,21 @@
+info:
+  name: PUT-estudios-atualizar
+  type: http
+
+http:
+  method: PUT
+  url: http://localhost:3000/estudios/1
+  body:
+    type: json
+    data: |-
+      {
+        "nome": "Vitor",
+        "pais": "Brasil"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

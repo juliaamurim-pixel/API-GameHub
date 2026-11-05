@@ -1,5 +1,5 @@
 import * as jogoModel from "../models/jogoModel.js";
-import { textoValido } from "../utils/validacoes.js";
+import { inteiroPositivo, textoValido } from "../utils/validacoes.js";
 
 export function listar(req, res, next) {
     jogoModel.listar((erro, resultado) => {
@@ -19,11 +19,11 @@ export function buscarPorId(req, res, next) {
 }
 
 export function criar(req, res, next) {
-    const { nome, pais } = req.body ?? {};
-    if (!textoValido(nome, 100) || !textoValido(pais, 60)) {
+    const { titulo, ano_lancamento, estudio_id } = req.body ?? {};
+    if (!textoValido(titulo, 100) || !inteiroPositivo(ano_lancamento) || !inteiroPositivo(estudio_id) ) {
         return res.status(400).json({ erro: "Informe titulo (até 150 caracteres), ano_lancamento de 1 a 9999 e estudio_id inteiro positivo" });
     }
-    const dados = { nome: nome.trim(), pais: pais.trim() };
+    const dados = { titulo: titulo.trim(), ano_lancamento: ano_lancamento, estudio_id: estudio_id  };
 
     jogoModel.criar(dados, (erro, resultado) => {
         if (erro) return next(erro);
@@ -35,8 +35,8 @@ export function criar(req, res, next) {
 }
 
 export function atualizar(req, res, next) {
-    const { nome, pais } = req.body ?? {};
-    if (!textoValido(nome, 100) || !textoValido(pais, 60)) {
+    const { titulo, ano_lancamento, estudio_id } = req.body ?? {};
+    if (!textoValido(titulo, 100) || !inteiroPositivo(ano_lancamento) || !inteiroPositivo(estudio_id) ) {
         return res.status(400).json({ erro: "Informe titulo (até 150 caracteres), ano_lancamento de 1 a 9999 e estudio_id inteiro positivo" });
     }
     const dados = { titulo: titulo.trim(), ano_lancamento, estudio_id };

@@ -1,0 +1,22 @@
+info:
+  name: PUT-jogadores-atualizar
+  type: http
+
+http:
+  method: PUT
+  url: http://localhost:3000/jogadores/2
+  body:
+    type: json
+    data: |-
+      {
+        "nome": "Pedro",
+        "email": "predro@gmail.com",
+        "nickname": "predro"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
